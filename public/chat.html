@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Application</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+    crossorigin="anonymous"
+  />
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .chat-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .chat-sidebar {
+      width: 25%;
+      background: #ffffff;
+      padding: 1rem;
+      border-right: 1px solid #dee2e6;
+      overflow-y: auto;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      background: #e9ecef;
+      overflow-y: auto;
+    }
+    .chat-form-container {
+      border-top: 1px solid #dee2e6;
+      padding: 0.75rem 1rem;
+      background: #fff;
+    }
+    .chat-form-container input {
+      width: 85%;
+    }
+    .chat-form-container button {
+      width: 13%;
+    }
+    @media (max-width: 768px) {
+      .chat-main {
+        flex-direction: column;
+      }
+      .chat-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container container-fluid p-0">
+    <!-- Header -->
+    <header class="bg-primary text-white py-3 px-4 d-flex justify-content-between align-items-center">
+      <h3 class="mb-0"><i class="fas fa-smile me-2"></i>Chat App</h3>
+      <a href="index.html" class="btn btn-outline-light btn-sm">Leave Room</a>
+    </header>
+
+    <!-- Main Chat Area -->
+    <main class="chat-main">
+      <!-- Sidebar -->
+      <div class="chat-sidebar">
+        <h5 class="mb-2"><i class="fas fa-comments me-1"></i> Room Name:</h5>
+        <h6 id="room-name" class="text-primary fw-bold">Loading...</h6>
+        <hr>
+        <h5><i class="fas fa-users me-1"></i> Users</h5>
+        <ul id="users" class="list-group list-group-flush mt-2"></ul>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="messages">
+        <!-- Chat messages appear here -->
+      </div>
+    </main>
+
+    <!-- Chat Input -->
+    <div class="chat-form-container d-flex align-items-center gap-2">
+      <form id="chat-form" class="d-flex w-100 gap-2">
+        <input
+          id="msg"
+          type="text"
+          class="form-control rounded-pill shadow-sm"
+          placeholder="Enter message..."
+          required
+          autocomplete="off"
+        />
+        <button type="submit" class="btn btn-primary rounded-pill">
+          <i class="fas fa-paper-plane"></i> Send
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.14.0/qs.min.js"
+    integrity="sha512-6yLIYbXqyvjSDYNO1pgBRjwWPBw66kMOb+sHqrvn457+iJiret0PeHzUlpLKHH0fYzX9bxGtPDqQ84xKrhEYSQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
